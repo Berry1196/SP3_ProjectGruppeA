@@ -1,0 +1,10 @@
+****** RANGLISTE ******
+Position       Hold       Point       Målscore
+1.plads.        rge       6       12
+2.plads.        fge       4       12
+3.plads.        eg       2       8
+4.plads.        gt       2       5
+5.plads.        d       0       4
+6.plads.        eg       0       3
+7.plads.        fre       0       2
+8.plads.        eg       0       2

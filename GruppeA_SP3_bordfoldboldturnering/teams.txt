@@ -1,0 +1,7 @@
+,holdet, [vivi, marian, susan, kim, molly],
+,nye hold, [vivi, marian, susan, kim, molly],
+,hold 3, [vivi, marian, susan, kim, molly],
+,turoe, [vivi, marian, susan, kim, molly],
+moroen, [vivi, marian, susan, kim, molly],
+nye hold, [vivi, marian, susan, kim, molly],
+nye hold, [vivi, marian, susan, kim, molly],

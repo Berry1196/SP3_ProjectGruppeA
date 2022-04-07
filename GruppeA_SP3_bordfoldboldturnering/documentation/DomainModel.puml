@@ -1,0 +1,48 @@
+@startuml
+!pragma layout smetana
+
+'OBJECTS'
+Object TournamentController
+Object Tournament
+Object RankList
+Object Registration
+Object Rounds
+Object Players
+Object Teams
+Object WinnersAndLosers
+Object TournamentPlan
+Object Input
+Object QuarterFinal
+Object SemiFinal
+Object Final
+Object SaveData
+
+'RELATIONSHIP BETWEEN OBJECTS'
+Input .. TournamentController
+
+TournamentController *-- Registration
+TournamentController *-- Tournament
+
+Tournament *-- TournamentPlan
+Tournament *-- RankList
+Tournament <-- Registration
+
+Registration *-- Rounds
+Registration --> TournamentPlan
+Registration *-- Teams : "8"
+
+SaveData ... Registration
+
+Teams *-- Players : "2-5"
+
+Rounds *-- QuarterFinal : "4"
+Rounds *-- SemiFinal : "2"
+Rounds *-- Final : "1"
+
+QuarterFinal o-- WinnersAndLosers
+SemiFinal o-- WinnersAndLosers
+Final o-- WinnersAndLosers
+
+WinnersAndLosers --> RankList
+
+@enduml

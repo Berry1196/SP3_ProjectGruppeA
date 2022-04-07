@@ -1,0 +1,181 @@
+@startuml
+!pragma layout smetana
+'https://plantuml.com/class-diagram
+
+Object TournamentController
+Main .. Tournament
+
+TournamentController .. TextUI
+TournamentController - Tournament
+TournamentController .. FileIO
+
+Tournament *-- RankList
+Tournament *--- Rounds
+Tournament *-- TournamentProgram
+
+Rounds *--- Teams
+Teams o-- Player
+
+'FIELDS AND METHODS'
+Class Main {
+~ throws IOException
+
+'fields'
++ Tournament t = new Tournament
+
+'methods'
++ t.startTournamentProgram()
+}
+
+Class TextUI {
+~ throws IOException
+
+'fields'
++ Scanner sca
++ ArrayList<Player> players
++ Teams teams
++ FileWriter fileData
+- String input
+- String comma
+
+'methods'
++ void addTeamAndPlayers(ArrayList<Teams> theTeams)
++ void addDate()
++ void addStartTimeRound()
++ void addEndTimeRounds()
++ void addStartTimeTournament()
++ void addEndTimeTournament()
++ void addLocation()
+}
+
+Class FileIO {
+~ throws FileNotFoundException
+
+'fields'
++ ArrayList<String> roundData
++ ArrayList<String> infoData
++ ArrayList<String> teamData
+
+'methods'
++ ArrayList<String> readTeamAndPlayerData()
++ ArrayList<String> readRoundsData()
++ ArrayList<String> readTournamentInfoData()
+- void showSavedTeamsData(ArrayList teamData)
+- void showSavedRoundsData(ArrayList roundData)
+- void showSavedInfoData(ArrayList infoData)
+}
+
+Class Tournament {
+~ throws IOException
+
+'fields'
++ Scanner scan = new Scanner : System.in
++ ArrayList<Teams> allTeams = new ArrayList<>
++ TextUI textUI = new TextUI
++ TournamentProgram tournamentprogram = new TournamentProgram
++ RankList ranklist = new RankList
++ FileIO fileIO = new FileIO
++ Rounds rounds = new Rounds
+- StringBuilder userInput
+
+'methods'
++ void startTournamentProgram()
+- void displayProgramMenu()
+- void registerTeams()
+- void registerTournamentInfo()
+- void registerGameTime()
+- void readSavedData()
+- void displayTitelAndDescription()
+- void endProgram()
+}
+
+Class TournamentProgram {
+~ throws FileNotFoundException
+
+'fields'
+- String[] data = new String[100];
+
+'methods'
++ void displayCompetitionCalender()
++ void displayListOfTeamsAndPlayers()
++ void displayNextGame()
+}
+
+Class Rounds {
+~ throws IOException
+
+'fields'
++ Scanner scan
++ ArrayList<Teams> allTeams
++ ArrayList<Teams> quarterTeams
++ ArrayList<Teams> semiTeams
++ ArrayList<Teams> finalTeams
++ RankList ranklist
++ Teams team1 = new Teams
++ Teams team2 = new Teams
++ Teams team3 = new Teams
++ Teams team4 = new Teams
++ Teams team5 = new Teams
++ Teams team6 = new Teams
++ Teams team7 = new Teams
++ Teams team8 = new Teams
+
+'methods'
++ void initializingTeams()
++ void quarterFinal()
++ void semiFinal()
++ void finalRound()
+}
+
+Class RankList {
+~ throws IOException
+'fields'
+
+'methods'
++ void displayRankList()
++ void makeRankList(ArrayList<Teams> teams)
+}
+
+Class Player {
+'fields'
++ String playerName
+
+'methods'
++ <<constructor>> Player(String playerName)
+- String getPlayerName()
++ String toString() : @Override
+}
+
+Class Teams {
+~ implements Comparable<Teams>
+
+'fields'
++ Scanner scan
++ String teamName
+- int currentScore
+- int updatedScore
+- int finalScore
+- int currentPoint
+- int updatedPoint
+- int finalPoint
+
+'methods'
++ void makeTeam()
++ void setTeamName(String teamName)
++ String getTeamName()
++ int getCurrentScore()
++ int getUpdatedScore()
++ int getFinalScore()
++ int getTotalScore()
++ int setCurrentScore(int currentScore)
++ void setUpdatedScore(int updatedScore)
++ void setFinalScore(int finalScore)
++ void setCurrentPoint(int currentPoint)
++ void setUpdatedPoint(int updatedPoint)
++ void setFinalPoint(int finalPoint)
++ int getTotalPoint()
++ int compareTo(Teams other) : @Override
+}
+
+
+@enduml
